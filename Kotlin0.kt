@@ -1,3 +1,6 @@
+import java.util.spi.AbstractResourceBundleProvider
+import kotlin.contracts.contract
+
 class Kotlin0 {
 }
 
@@ -77,10 +80,21 @@ fun main() {
     var person = Person("kotlin", "Kotlin")
     println(person.age)
     person.age = 10
+    person.message = "hey"
     println(person.age)
+    println(person.message)
 
     val greeter = Greeter()
     greeter.greet("Kotlin")
+
+    SingletonClass.staticMethod()
+
+    Myclass.staticMethod()
+    println(Myclass.staticMember)
+    val ins = Myclass()
+    ins.instanceMethod()
+    println(ins.instanceMember)
+
 }
 
 class Person(name: String) {
@@ -91,10 +105,31 @@ class Person(name: String) {
         println("parent = $parent")
     }
     var age: Int = 0
+    lateinit var message: String
 }
 
 class Greeter {
     fun greet(name: String) {
         println("Hello, $name!")
     }
+}
+
+object SingletonClass {
+    fun staticMethod() {
+        println("singleton")
+    }
+}
+
+class Myclass {
+    companion object {
+        var staticMember: Int = 1
+        fun staticMethod() {
+            println("static")
+        }
+    }
+    val instanceMember: Int = 2
+    fun instanceMethod(){
+        println("instance")
+    }
+
 }
