@@ -127,7 +127,7 @@ class Myclass {
             println("static")
         }
     }
-    val instanceMember: Int = 2
+    val instanceMember: Int = 3
     fun instanceMethod(){
         println("instance")
     }
